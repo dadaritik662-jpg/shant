@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>शांत – तनाव से राहत</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Tiro+Devanagari+Hindi&display=swap">
+<style>
+:root{--bg:#EDF3F1;--card:#fff;--ink:#1D2940;--mut:#5B6B80;--ac:#1E7F74;--ac2:#8C7BF0;--line:#D5E0DD;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1526;--card:#172038;--ink:#E7EEF9;--mut:#9AA8C0;--ac:#59D3C0;--ac2:#A99BFF;--line:#27324F;--on:#0E1526}}
+:root[data-theme="dark"]{--bg:#0E1526;--card:#172038;--ink:#E7EEF9;--mut:#9AA8C0;--ac:#59D3C0;--ac2:#A99BFF;--line:#27324F;--on:#0E1526}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Mukta,"Noto Sans Devanagari",sans-serif;padding:0 16px 96px;max-width:560px;margin-inline:auto}
+h1,h2{font-family:"Tiro Devanagari Hindi",serif;font-weight:400;line-height:1.25;margin:.4em 0 .2em}
+h1{font-size:36px}h2{font-size:23px;margin-top:1.4em}
+p{margin:.3em 0}.mut{color:var(--mut);font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin:12px 0}
+button{font:inherit;color:inherit;cursor:pointer}
+.row{display:flex;justify-content:space-between;align-items:center;width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 16px;margin:8px 0;text-align:left;min-height:52px}
+.row span{color:var(--mut);font-size:14px}
+.btn{background:var(--ac);color:var(--on);border:0;border-radius:14px;padding:12px 20px;font-weight:800;min-height:48px}
+.chip{background:transparent;border:1.5px solid var(--line);border-radius:99px;padding:7px 14px;margin:4px 4px 0 0;min-height:40px}
+.chip.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.orbwrap{display:grid;place-items:center;height:250px}
+.orb{width:180px;height:180px;border-radius:50%;border:0;color:#fff;font:800 20px/1.3 Mukta,sans-serif;background:radial-gradient(circle at 32% 30%,var(--ac2),var(--ac));box-shadow:0 0 60px 8px color-mix(in srgb,var(--ac2) 45%,transparent);animation:br 8s ease-in-out infinite}
+@keyframes br{50%{transform:scale(1.22)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;background:var(--card);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav div{display:flex;width:100%;max-width:560px}
+nav button{flex:1;background:none;border:0;padding:6px 0;font-size:13px;color:var(--mut);min-height:52px}
+nav button b{display:block;font-size:22px;font-weight:400}
+nav button.on{color:var(--ac);font-weight:800}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px}
+#msgs{max-height:48vh;overflow:auto;padding:4px 0}
+.m{padding:10px 14px;border-radius:16px;margin:8px 0;max-width:88%;white-space:pre-wrap}
+.m.u{background:var(--ac);color:var(--on);margin-left:auto}.m.a{background:var(--card);border:1px solid var(--line)}
+.m .chip{display:block;margin-top:8px}
+.send{display:flex;gap:8px;margin-top:8px}.send input{flex:1}
+#cr,.warn{background:color-mix(in srgb,#E5484D 14%,var(--card));border:1.5px solid #E5484D;border-radius:16px;padding:12px 14px;margin:10px 0}
+#run{position:fixed;inset:0;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:9}
+#run.on{display:flex}
+#orb2{width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 32% 30%,var(--ac2),var(--ac));transition:transform 4s ease-in-out;box-shadow:0 0 70px 10px color-mix(in srgb,var(--ac2) 45%,transparent);display:grid;place-items:center;color:#fff;font:800 34px Mukta}
+#rt{font:400 26px/1.4 "Tiro Devanagari Hindi",serif;margin:44px 0 18px;min-height:74px}
+#rb{width:80%;height:6px;background:var(--line);border-radius:9px;overflow:hidden}#rbar{height:100%;background:var(--ac);width:0;transition:width 1s linear}
+.fb{display:none;gap:10px;margin-top:20px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin:8px 0}summary{font-weight:800;min-height:34px}
+a{color:var(--ac);font-weight:800}
+.bar{height:10px;border-radius:9px;background:var(--ac);margin-top:4px}
+label.ck{display:flex;gap:10px;align-items:center;padding:8px 0;min-height:44px}label.ck input{width:22px;height:22px;accent-color:var(--ac)}
+:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+</style>
+<meta name="theme-color" content="#1E7F74"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="description" content="शांत – तनाव कम करने वाला ऐप: सांस, नींद, पैटर्न और मदद"></head>
+<body>
+<main id="app"></main>
+<nav><div id="nv"></div></nav>
+<div id="run" role="dialog" aria-live="polite">
+ <div id="orb2"><span id="rc"></span></div>
+ <div id="rt"></div><div id="rb"><div id="rbar"></div></div>
+ <div class="fb" id="fb"><button class="btn" data-a="fb" data-v="1">बेहतर लगा 🙂</button><button class="chip" data-a="fb" data-v="0">वैसा ही</button></div>
+ <p><button class="chip" id="stp" data-a="stop">रोकें</button></p>
+</div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let S={done:[],checks:[],rt:{d:"",v:[]}};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem("shant")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("shant",JSON.stringify(S))}catch(e){}};
+const day=()=>new Date().toDateString();
+const br=n=>{let a=[];for(let i=0;i<n;i++)a.push({t:"सांस लो… धीरे-धीरे",s:4,z:1.4},{t:"रोको",s:4,z:1.4},{t:"सांस छोड़ो… लंबी",s:6,z:.8});return a};
+const n478=n=>{let a=[];for(let i=0;i<n;i++)a.push({t:"नाक से सांस लो",s:4,z:1.4},{t:"रोको",s:7,z:1.4},{t:"मुँह से धीरे छोड़ो",s:8,z:.8});return a};
+const EX={
+quick:{n:"30 सेकंड रीसेट",m:"30 सेकंड",st:br(2)},
+breath:{n:"गहरी सांस",m:"3 मिनट",st:br(13)},
+ground:{n:"5-4-3-2-1 ग्राउंडिंग",m:"2 मिनट",st:[["5 चीज़ें देखो जो अभी दिख रही हैं",25],["4 चीज़ें छुओ। उनका एहसास महसूस करो",25],["3 आवाज़ें सुनो",20],["2 खुशबू पहचानो",20],["1 अच्छी बात सोचो। अब सांस लो",20]].map(x=>({t:x[0],s:x[1]}))},
+muscle:{n:"मांसपेशियां ढीली करो",m:"3 मिनट",st:["हाथ","कंधे","चेहरा","पेट","पैर"].flatMap(x=>[{t:x+" को कसकर कसो",s:5,z:1.15},{t:"अब ढीला छोड़ दो। फर्क महसूस करो",s:10,z:.9}])},
+relax:{n:"गाइडेड आराम",m:"3 मिनट",st:["आराम से बैठो या लेट जाओ। आँखें बंद करो","सिर का भार ढीला छोड़ दो","माथा और आँखें नरम होने दो","जबड़ा ढीला करो। कंधे नीचे गिरने दो","हाथ भारी और गर्म हो रहे हैं","पेट सांस के साथ ऊपर-नीचे हो रहा है","पैर ज़मीन में टिके हैं। सब ठीक है","धीरे से आँखें खोलो"].map(t=>({t,s:22}))},
+night:{n:"रात की 4-7-8 सांस",m:"4 मिनट",st:n478(6)}};
+const TABS=[["home","🫧","रीसेट"],["chat","💬","साथी"],["act","🎯","कदम"],["sleep","🌙","नींद"],["me","🌿","मैं"]];
+let T="home",M=[],busy=false,PK="";
+const crisis=t=>/आत्महत्या|खुदकुशी|जान दे|मर जा|मरना चाह|जीना नहीं|जीने का मन नहीं|खुद को (नुकसान|चोट)|suicide|kill myself|end my life|self.?harm/i.test(t);
+const CR=`<div class="warn" id="CRB" hidden><b>आप अकेले नहीं हैं।</b> अभी किसी से बात करें: भारत में Tele-MANAS <a href="tel:14416">14416</a>, अमेरिका में <a href="tel:988">988</a>। खतरा लगे तो इमरजेंसी नंबर (भारत 112) मिलाएँ। <a href="#" data-a="tab" data-v="me">सारे देशों की मदद</a></div>`;
+const nav=()=>$("#nv").innerHTML=TABS.map(t=>`<button data-a="tab" data-v="${t[0]}" class="${T===t[0]?"on":""}"><b>${t[1]}</b>${t[2]}</button>`).join("");
+const todayN=()=>S.done.filter(x=>new Date(x.ts).toDateString()===day()).length;
+function view(){nav();const a=$("#app");
+if(T==="home")a.innerHTML=`<h1>एक पल रुको।</h1><p class="mut">सांस लो। बाकी सब बाद में।</p><div class="orbwrap"><button class="orb" data-a="ex" data-v="quick">30 सेकंड<br>रीसेट</button></div><p class="mut" style="text-align:center">आज ${todayN()} अभ्यास पूरे · 🔥 ${streak()} दिन · स्तर ${Math.floor(S.done.length/5)+1}</p><p style="text-align:center"><button class="chip" data-a="sos">🆘 अभी बहुत घबराहट है</button></p><div class="card"><b>आज का मेरा प्लान</b><div id="dp" style="white-space:pre-wrap"><p class="mut">तुम्हारे चेक-इन और पैटर्न देखकर AI आज का प्लान बनाएगा।</p><button class="btn" data-a="dplan">मेरे लिए प्लान बनाओ</button></div></div><h2>कुछ और अभ्यास</h2>`+Object.entries(EX).filter(x=>x[0]!=="quick"&&x[0]!=="night").map(([k,e])=>`<button class="row" data-a="ex" data-v="${k}"><b>${e.n}</b><span>${e.m}</span></button>`).join("");
+if(T==="chat"){a.innerHTML=`<h1>साथी</h1><p class="mut">मन की बात कहो। मैं AI हूँ, डॉक्टर या थेरेपिस्ट नहीं।</p>${CR.replace("CRB","cr")}<div id="msgs"></div><div>${["आज बहुत थका हुआ हूँ","घबराहट हो रही है","नींद नहीं आ रही"].map(x=>`<button class="chip" data-a="send" data-v="${x}">${x}</button>`).join("")}</div><div class="send"><input type="text" id="ci" placeholder="यहाँ लिखो…" aria-label="संदेश"><button class="chip" data-a="mic" aria-label="बोलकर लिखो">🎤</button><button class="btn" data-a="send">भेजो</button></div>`;M.length||M.push({r:"a",c:"नमस्ते। आज कैसा लग रहा है? जो मन में है, बेझिझक बताओ।"});draw();$("#ci").onkeydown=e=>{if(e.key==="Enter")send($("#ci").value)}}
+if(T==="act")a.innerHTML=`<h1>काम का रास्ता</h1><p class="mut">जो भारी लग रहा है, लिख दो। मैं उसे छोटे कदमों में बाँट दूँगा।</p>${CR.replace("CRB","cr")}<textarea id="pi" rows="5" placeholder="जैसे: मुझे बहुत काम करना है, समझ नहीं आ रहा कहाँ से शुरू करूँ…"></textarea><p><button class="btn" data-a="plan">रास्ता बनाओ</button></p><div id="pr"></div>`;
+if(T==="sleep")sleepV();
+if(T==="me")meV()}
+function draw(){const m=$("#msgs");if(!m)return;m.innerHTML=M.map(x=>{const c=x.c||"",g=c.match(/\[EX:(\w+)\]/),t=c.replace(/\[EX[^\]]*\]?/g,"").trim();return`<div class="m ${x.r}">${esc(t)||"…"}${g&&EX[g[1]]?`<button class="chip" data-a="ex" data-v="${g[1]}">▶ ${EX[g[1]].n}</button>`:""}</div>`}).join("");m.scrollTop=m.scrollHeight}
+const INSTR="तुम ‘शांत’ ऐप के AI साथी हो। सरल, गर्म हिंदी में 2-4 छोटे वाक्य लिखो। पहले सुनो, एक बार में सिर्फ एक सवाल पूछो। बीमारी का निदान, दवा या इलाज कभी मत बताओ; तुम थेरेपिस्ट का विकल्प नहीं हो। जब ठीक लगे तो जवाब के अंत में एक अभ्यास सुझाओ और टैग लगाओ: [EX:breath] या [EX:ground] या [EX:muscle] या [EX:relax] या [EX:quick]। अगर व्यक्ति खुद को नुकसान या जान देने की बात करे, तो शांत रहो, उसकी बात गंभीरता से लो, और उसे तुरंत किसी भरोसेमंद इंसान और हेल्पलाइन (भारत Tele-MANAS 14416, अमेरिका 988) से बात करने को कहो।";
+async function smp(){return window.claude?await claude.use("sample"):null}
+async function send(t){t=(t||"").trim();if(!t||busy)return;busy=true;M.push({r:"u",c:t});const a={r:"a",c:""};M.push(a);draw();$("#ci").value="";if(crisis(t))$("#cr").hidden=false;
+try{const sm=await smp();if(!sm){a.c=localReply(t);draw();busy=false;return}const h=M.slice(-11,-1).map(x=>(x.r==="u"?"व्यक्ति: ":"साथी: ")+x.c).join("\n");const r=await sm(INSTR+"\n\nबातचीत अब तक:\n"+h+"\n\nअब साथी का अगला जवाब दो।",{modelTier:"quick",cache:false,onText:({text})=>{a.c=text;draw()}});a.c=r.text||a.c}catch(e){if(!a.c)a.c="अभी जवाब नहीं आ पा रहा। तब तक एक अभ्यास आज़माओ। [EX:breath]"}
+draw();busy=false}
+const PI='सिर्फ JSON दो, और कुछ नहीं। सरल हिंदी। रूप: {"samajh":"समस्या एक-दो छोटे वाक्य में साफ","kaam":[{"naam":"काम","kab":"अभी या आज या बाद में"}],"pehla_kadam":"5 मिनट में होने वाला एक छोटा काम"}। kaam में 3 से 6 चीज़ें, ज़रूरी पहले। व्यक्ति की समस्या:\n';
+async function plan(){const t=$("#pi").value.trim();if(!t)return;if(crisis(t))$("#cr").hidden=false;const o=$("#pr");o.innerHTML='<p class="mut">सोच रहा हूँ…</p>';
+try{const sm=await smp();const j=sm?await sm.json(PI+t,{modelTier:"quick",cache:false}):localPlan(t);PK=j.pehla_kadam;
+o.innerHTML=`<div class="card"><b>समझ</b><p>${esc(j.samajh)}</p></div>`+["अभी","आज","बाद में"].map(k=>{const l=(j.kaam||[]).filter(x=>String(x.kab).includes(k));return l.length?`<div class="card"><b>${k}</b>${l.map(x=>`<p>• ${esc(x.naam)}</p>`).join("")}</div>`:""}).join("")+`<div class="card" style="border-color:var(--ac)"><b>पहला छोटा कदम</b><p style="font-size:20px">${esc(PK)}</p><button class="btn" data-a="pk">5 मिनट शुरू करो</button></div>`}
+catch(e){o.innerHTML='<p class="mut">अभी रास्ता नहीं बन पाया। फिर कोशिश करो।</p>'}}
+let CK={l:0,c:"",s:""};
+function pats(){const c=S.checks;if(c.length<3)return[`पैटर्न दिखने के लिए कम से कम 3 चेक-इन करो। अभी ${c.length}/3।`];const o=[],avg=l=>l.reduce((a,x)=>a+x.l,0)/l.length;
+const hi=c.filter(x=>x.l>=3),src=hi.length?hi:c,cn={};src.forEach(x=>x.c&&(cn[x.c]=(cn[x.c]||0)+1));const tc=Object.entries(cn).sort((a,b)=>b[1]-a[1])[0];if(tc)o.push(`तनाव का सबसे आम कारण: ${tc[0]} (${tc[1]} बार)`);
+const D=["रविवार","सोमवार","मंगलवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"],dd={};c.forEach(x=>{const d=new Date(x.ts).getDay();(dd[d]=dd[d]||[]).push(x)});const wd=Object.entries(dd).filter(x=>x[1].length>=2).sort((a,b)=>avg(b[1])-avg(a[1]))[0];if(wd)o.push(`${D[wd[0]]} को तनाव ज़्यादा रहता है`);
+const lo=c.filter(x=>x.s==="low"),ok=c.filter(x=>x.s==="ok");if(lo.length&&ok.length)o.push(avg(lo)>avg(ok)?"कम नींद वाले दिन तनाव ज़्यादा रहा":"नींद का असर अभी साफ नहीं दिख रहा");return o}
+function meV(){const w=Date.now()-6048e5,rec=S.done.filter(x=>x.ts>w).length,hp={};S.done.filter(x=>x.h).forEach(x=>hp[x.n]=(hp[x.n]||0)+1);const hl=Object.entries(hp).sort((a,b)=>b[1]-a[1]);
+const ch=(k,arr)=>arr.map(([v,l])=>`<button class="chip ${CK[k]===v?"on":""}" data-a="ck" data-k="${k}" data-v="${v}">${l}</button>`).join("");
+$("#app").innerHTML=`<h1>मैं</h1><h2>अभी कैसा लग रहा है?</h2><div class="card"><p class="mut">तनाव कितना है?</p>${ch("l",[[1,"😌 शांत"],[2,"🙂 ठीक"],[3,"😟 थोड़ा"],[4,"😣 ज़्यादा"],[5,"😖 बहुत"]])}<p class="mut">किस वजह से?</p>${ch("c",["काम","घर-परिवार","पैसा","सेहत","रिश्ते","अकेलापन","कुछ और"].map(x=>[x,x]))}<p class="mut">कल नींद?</p>${ch("s",[["low","6 घंटे से कम"],["ok","6 घंटे या ज़्यादा"]])}<p><button class="btn" data-a="cks">सेव करो</button></p></div>
+<h2>तुम्हारे पैटर्न</h2><div class="card">${pats().map(x=>`<p>🔎 ${esc(x)}</p>`).join("")}</div>
+<h2>तुम्हारी प्रगति</h2><div class="card"><p>कुल अभ्यास: <b>${S.done.length}</b> · इस हफ्ते: <b>${rec}</b></p>${hl.length?`<p>सबसे काम आया: <b>${esc(hl[0][0])}</b> (${hl[0][1]} बार बेहतर लगा)</p>`:'<p class="mut">अभ्यास के बाद “बेहतर लगा” दबाओ, तो यहाँ दिखेगा कौन सा तुम्हारे लिए काम करता है।</p>'}${trend()}</div>
+<h2>पेशेवर मदद</h2><div class="card"><p>अगर तनाव लगातार रहे, या बहुत भारी लगे, तो किसी मानसिक स्वास्थ्य विशेषज्ञ से बात करना सबसे अच्छा कदम है। यह ऐप इलाज का विकल्प नहीं है।</p></div>
+<details open><summary>🇮🇳 भारत</summary><p>Tele-MANAS: <a href="tel:14416">14416</a> (24 घंटे, मुफ़्त)</p><p>KIRAN: <a href="tel:18005990019">1800-599-0019</a></p><p>इमरजेंसी: <a href="tel:112">112</a></p></details>
+<details><summary>🇺🇸 अमेरिका / 🇨🇦 कनाडा</summary><p>988 (कॉल या टेक्स्ट): <a href="tel:988">988</a></p><p>इमरजेंसी: 911</p></details>
+<details><summary>🇬🇧 ब्रिटेन</summary><p>Samaritans: <a href="tel:116123">116 123</a></p><p>इमरजेंसी: 999</p></details>
+<details><summary>🇦🇺 ऑस्ट्रेलिया</summary><p>Lifeline: <a href="tel:131114">13 11 14</a></p><p>इमरजेंसी: 000</p></details>
+<details><summary>🌍 दूसरे देश</summary><p>findahelpline.com पर अपना देश चुनो।</p></details>
+<p class="mut">नंबर बदल सकते हैं। एक बार पक्का कर लेना। तुम्हारा डेटा सिर्फ इसी फोन में रहता है।</p><h2>डाउनलोड</h2><div class="card"><button class="btn" data-a="dlapp">📲 फोन में जोड़ो</button><p class="mut">ब्राउज़र मेन्यू में ‘Add to Home screen’ दबाओ, ऐप जैसा आइकन बन जाएगा।</p><button class="chip" data-a="dldata">⬇ मेरा डेटा बैकअप</button></div><p><button class="chip" data-a="wipe">मेरा डेटा मिटाओ</button></p>`}
+function streak(){let n=0,d=new Date();const s=new Set(S.done.map(x=>new Date(x.ts).toDateString()));if(!s.has(d.toDateString()))d.setDate(d.getDate()-1);while(s.has(d.toDateString())){n++;d.setDate(d.getDate()-1)}return n}
+function trend(){const c=S.checks.slice(-14);if(c.length<2)return"";const p=c.map((x,i)=>(4+i*272/(c.length-1)).toFixed(0)+","+(72-x.l*12)).join(" ");return`<p class="mut">तनाव का ग्राफ (ऊपर = ज़्यादा तनाव)</p><svg viewBox="0 0 280 80" width="100%" role="img" aria-label="तनाव ग्राफ"><polyline points="${p}" fill="none" stroke="var(--ac)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>`}
+async function dplan(){const o=$("#dp");o.innerHTML='<p class="mut">सोच रहा हूँ…</p>';try{const sm=await smp();if(!sm){o.textContent=localDay();return}const ck=S.checks.slice(-7).map(x=>`तनाव ${x.l}/5, कारण ${x.c||"-"}, नींद ${x.s||"-"}`).join("; ");const r=await sm("तुम ‘शांत’ ऐप के साथी हो। सरल हिंदी में आज के लिए सिर्फ 4 छोटी लाइन का प्लान दो: 1 अभ्यास, 1 छोटी आदत, 1 नींद की बात, 1 हौसले की बात। निदान या दवा मत बताओ। व्यक्ति के हाल के चेक-इन: "+(ck||"अभी कोई नहीं")+". पैटर्न: "+pats().join("; "),{modelTier:"quick",cache:false});o.textContent=r.text}catch(e){o.innerHTML='<p class="mut">अभी प्लान नहीं बन पाया। फिर कोशिश करो।</p>'}}
+let AC,src,gn,st,spk=false;
+function stopSnd(){clearTimeout(st);try{src&&src.stop()}catch(e){}src=null;speechSynthesis&&speechSynthesis.cancel()}
+function snd(k){stopSnd();AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume();const L=AC.sampleRate*3,b=AC.createBuffer(1,L,AC.sampleRate),d=b.getChannelData(0);let l=0;
+for(let i=0;i<L;i++){const w=Math.random()*2-1;if(k==="rain")d[i]=w;else{l=(l+.02*w)/1.02;d[i]=l*3.5}}
+src=AC.createBufferSource();src.buffer=b;src.loop=true;const f=AC.createBiquadFilter(),g=AC.createGain(),o=AC.createOscillator(),og=AC.createGain();
+if(k==="rain"){f.type="highpass";f.frequency.value=1200;g.gain.value=.12;o.frequency.value=.01;og.gain.value=0}
+if(k==="wave"){f.type="lowpass";f.frequency.value=700;g.gain.value=.5;o.frequency.value=.1;og.gain.value=.4;o.connect(og);og.connect(g.gain)}
+if(k==="wind"){f.type="bandpass";f.frequency.value=500;f.Q.value=.8;g.gain.value=.9;o.frequency.value=.15;og.gain.value=300;o.connect(og);og.connect(f.frequency)}
+o.start();src.connect(f);f.connect(g);g.connect(AC.destination);src.start();const m=+($("#tm")||{value:30}).value;st=setTimeout(()=>{g.gain.linearRampToValueAtTime(0,AC.currentTime+8);setTimeout(stopSnd,8500)},m*6e4)}
+const STORY="आँखें बंद करो। एक लंबी सांस लो, और धीरे से छोड़ दो। सोचो, तुम एक शांत झील के किनारे हो। हवा हल्की है। पानी धीरे-धीरे हिल रहा है। हर सांस के साथ तुम्हारा शरीर भारी और ढीला हो रहा है। आज का सारा बोझ तुम यहीं किनारे रख दो। कल की चिंता कल देख लेंगे। अभी सिर्फ आराम है। सांस लो… और छोड़ो… नींद अपने आप आ जाएगी।";
+const RT=["सोने से 30 मिनट पहले स्क्रीन बंद करो","कल के 3 काम कागज़ पर लिख दो","कमरा अंधेरा और ठंडा रखो","हल्का पानी पियो","4-7-8 सांस करो","फोन बिस्तर से दूर रखो"];
+function sleepV(){if(S.rt.d!==day())S.rt={d:day(),v:[]};$("#app").innerHTML=`<h1>नींद</h1><p class="mut">हेडफोन या फोन पास रखकर, स्क्रीन बंद करके सुनो।</p><h2>आराम की आवाज़ें</h2><div class="card"><button class="chip" data-a="snd" data-v="rain">🌧️ बारिश</button><button class="chip" data-a="snd" data-v="wave">🌊 लहरें</button><button class="chip" data-a="snd" data-v="wind">🍃 हवा</button><button class="chip" data-a="sstop">⏹ बंद</button><p class="mut">अपने आप बंद होगा:</p><select id="tm" class="chip"><option value="15">15 मिनट</option><option value="30" selected>30 मिनट</option><option value="60">60 मिनट</option></select></div><h2>सोने से पहले की कहानी</h2><div class="card"><p>${STORY}</p><button class="btn" data-a="spk">▶ सुनो</button> <button class="chip" data-a="sstop">⏹ बंद</button></div><h2>रात की सांस</h2><button class="row" data-a="ex" data-v="night"><b>4-7-8 सांस</b><span>4 मिनट</span></button><button class="row" data-a="ex" data-v="relax"><b>गाइडेड आराम</b><span>3 मिनट</span></button><h2>आज की स्लीप रूटीन</h2><div class="card">${RT.map((x,i)=>`<label class="ck"><input type="checkbox" data-a="rt" data-v="${i}" ${S.rt.v.includes(i)?"checked
